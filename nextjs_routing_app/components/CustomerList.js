@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import {Query} from 'react-apollo';
-import {Page, Card, ResourceList, ResourceItem} from '@shopify/polaris';
+import {Card, Page, ResourceItem, ResourceList} from '@shopify/polaris';
 
 const GET_CUSTOMERS = gql`
   query getCustomers {
@@ -39,7 +39,7 @@ const RenderCustomer = ( customer ) => {
   const customerId = Number( customer.id.split('/').pop() );
   return (
     <ResourceItem id={customerId}
-                  url={`customers/${customerId.toString()}`}
+                  url={`/customers/${customerId}`}
     >
       { customer.displayName }
     </ResourceItem>

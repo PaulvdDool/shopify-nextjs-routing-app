@@ -7,6 +7,7 @@ import { authenticatedFetch } from "@shopify/app-bridge-utils";
 import { Redirect } from "@shopify/app-bridge/actions";
 import "@shopify/polaris/dist/styles.css";
 import translations from "@shopify/polaris/locales/en.json";
+import CustomLink from "../components/CustomLink";
 
 function userLoggedInFetch(app) {
   const fetchFunction = authenticatedFetch(app);
@@ -53,7 +54,7 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, shopOrigin } = this.props;
     return (
-      <AppProvider i18n={translations}>
+      <AppProvider i18n={translations} linkComponent={CustomLink}>
         <Provider
           config={{
             apiKey: API_KEY,

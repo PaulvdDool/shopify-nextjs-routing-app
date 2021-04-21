@@ -2,8 +2,7 @@ import { useRouter } from 'next/router';
 
 const CustomerDetails = () => {
   const router = useRouter();
-  const customerId = router.query;
-  console.info( { customerId } )
+  const customerId = router.query.customerId;
 
   return (
     <h1>Customer: { customerId }</h1>
