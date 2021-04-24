@@ -1,30 +1,22 @@
-# Shopify App Node
+# Shopify NextJs Routing App
+Small example Shopify embedded app with React and NextJS and routing that is visible in the top level domain.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
-[![Build Status](https://travis-ci.com/Shopify/shopify-app-node.svg?branch=master)](https://travis-ci.com/Shopify/shopify-app-node)
+## Shopify CLI
+The Shopify CLI was used to create the boiler template.
 
-Boilerplate to create an embedded Shopify app made with Node, [Next.js](https://nextjs.org/), [Shopify-koa-auth](https://github.com/Shopify/quilt/tree/master/packages/koa-shopify-auth), [Polaris](https://github.com/Shopify/polaris-react), and [App Bridge React](https://shopify.dev/tools/app-bridge/react-components).
+## JWT: Json Web Token
+Uses JWT session token for authentication.
+
+## RoutePropagator
+Has multiple routes, both static and dynamic and nested, and uses the RoutePropagator to expose the routing in the top level domain.
+
+---
 
 ## Installation
-
-Using the [Shopify-App-CLI](https://github.com/Shopify/shopify-app-cli) run:
-
-```sh
-~/ $ shopify create project APP_NAME
-```
-
-Or, fork and clone repo
-
-## Requirements
-
-- If you don’t have one, [create a Shopify partner account](https://partners.shopify.com/signup).
-- If you don’t have one, [create a Development store](https://help.shopify.com/en/partners/dashboard/development-stores#create-a-development-store) where you can install and test your app.
-- In the Partner dashboard, [create a new app](https://help.shopify.com/en/api/tools/partner-dashboard/your-apps#create-a-new-app). You’ll need this app’s API credentials during the setup process.
-
-## Usage
-
-This repository is used by [Shopify-App-CLI](https://github.com/Shopify/shopify-app-cli) as a scaffold for Node apps. You can clone or fork it yourself, but it’s faster and easier to use Shopify App CLI, which handles additional routine development tasks for you.
-
-## License
-
-This respository is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The following steps require a Shopify Partner account and access to a dev store.
+1. Clone this repo to a local directory.
+2. Run `npm install` to install all dependencies.
+3. Run `shopify serve` or `npm run serve` (as seen in the package.json file) to start the ngrok tunnel on which the app will run.
+4. Fill in the name of the Shopify dev store when required.
+5. Follow the link in the command tool to install the app on your dev store.
+6. Visit your dev store and launch the app.
