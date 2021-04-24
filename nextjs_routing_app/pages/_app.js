@@ -8,6 +8,7 @@ import { Redirect } from "@shopify/app-bridge/actions";
 import "@shopify/polaris/dist/styles.css";
 import translations from "@shopify/polaris/locales/en.json";
 import CustomLink from "../components/CustomLink";
+import RoutePropagator from "../components/RoutePropagator";
 
 function userLoggedInFetch(app) {
   const fetchFunction = authenticatedFetch(app);
@@ -52,7 +53,18 @@ function MyProvider(props) {
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps, shopOrigin } = this.props;
+    let { Component, pageProps, shopOrigin } = this.props;
+
+    // store shopOrigin in the browser's sessionStorage
+    if ( typeof window !== "undefined" ) {
+      const sessionShopOrigin = window.sessionStorage.getItem('shopOrigin');
+      if (!!sessionShopOrigin && sessionShopOrigin !== shopOrigin) {
+        shopOrigin = sessionShopOrigin;
+      } else if (!sessionShopOrigin && !!shopOrigin) {
+        window.sessionStorage.setItem('shopOrigin', shopOrigin);
+      }
+    }
+
     return (
       <AppProvider i18n={translations} linkComponent={CustomLink}>
         <Provider
@@ -62,6 +74,7 @@ class MyApp extends App {
             forceRedirect: true,
           }}
         >
+          <RoutePropagator />
           <MyProvider Component={Component} {...pageProps} />
         </Provider>
       </AppProvider>
